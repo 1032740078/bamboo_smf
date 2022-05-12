@@ -131,14 +131,14 @@ circuit.next('事件:to,err','跳转时可以重新定义当前状态','事件�
 
 按当前状态跳转到to
 ```
-circuit.next('跳转时可以重新定义当前状态')
+circuit.next('跳转时可以重新定义当前状态','事件入参')
 ```
 
 # Smf.nextErr
 
 按当前状态跳转到err
 ```
-circuit.next('跳转时可以重新定义当前状态')
+circuit.next('跳转时可以重新定义当前状态','事件入参')
 ```
 
 # Smf.on
