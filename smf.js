@@ -4,7 +4,7 @@
  * */
 const EventEmitter = require('events');
 
-class Smf {
+module.exports = class Smf {
     constructor() {
         this.smf_data = {
             area_name  : "",//区块名称 or 状态链名称
@@ -136,7 +136,7 @@ class Smf {
         const status_data = this.get()
         const event_next = status_data[event]
         if (!event_next) {
-            throw `[${this.currentState}]没有这个事件:${event}`
+            throw new Error(`[${this.currentState}]没有这个事件:${event}`)
         }
         this.setStatus(event_next)
         this.emit(this.get())
@@ -160,5 +160,6 @@ class Smf {
         this.event.emit('next', paras)
     }
 }
+
 
 
