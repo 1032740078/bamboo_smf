@@ -129,9 +129,10 @@ module.exports = class Smf {
      * 按当前状态跳转下一个
      * @param  {string} event 事件:to,err.
      * @param  {string} status 跳转时可以重新定义当前状态.
+     * @param  {Object} paras 触发事件时的入参.
      * @return {Object} this 当前对象.
      */
-    next(event, status) {
+    next(event, status, paras) {
         this.setStatus(status)
         const status_data = this.get()
         const event_next = status_data[event]
@@ -139,16 +140,16 @@ module.exports = class Smf {
             throw new Error(`[${this.currentState}]没有这个事件:${event}`)
         }
         this.setStatus(event_next)
-        this.emit(this.get())
+        this.emit(this.get(), paras)
         return this
     }
 
-    nextTo(status) {
-        return this.next('to', status)
+    nextTo(status, paras) {
+        return this.next('to', status, paras)
     }
 
-    nextErr(status) {
-        return this.next('err', status)
+    nextErr(status, paras) {
+        return this.next('err', status, paras)
     }
 
 
@@ -156,10 +157,7 @@ module.exports = class Smf {
         this.event.on('next', fn)
     }
 
-    emit(paras) {
-        this.event.emit('next', paras)
+    emit(e, paras) {
+        this.event.emit('next', e, paras)
     }
 }
-
-
-

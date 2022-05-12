@@ -36,8 +36,8 @@ circuit2.getSmfData(),
 ])
 
 //监听流程变更
-processFlow.on((e)=>{
-console.log('on',e.currentState);
+processFlow.on((e, paras) => {
+    console.log(e,paras);
 })
 
 //跳转下个流程
@@ -123,7 +123,7 @@ circuit.getErr()
 
 按当前状态跳转下一个
 ```
-circuit.next('事件:to,err','跳转时可以重新定义当前状态')
+circuit.next('事件:to,err','跳转时可以重新定义当前状态','事件入参')
 ```
 
 
@@ -139,4 +139,23 @@ circuit.next('跳转时可以重新定义当前状态')
 按当前状态跳转到err
 ```
 circuit.next('跳转时可以重新定义当前状态')
+```
+
+# Smf.on
+
+触发跳转时的事件
+```
+circuit.on((e, paras) => {
+    console.log(e,paras);
+   /**
+    e:当前状态数据: {
+      status_name: 'ling',
+      to: 'test.end',
+      err: '',
+      currentState: 'test.ling'
+    }
+   **/
+})
+
+
 ```
