@@ -1,0 +1,18 @@
+{
+  "name": "bamboo_smf",
+  "version": "1.0.4",
+  "description": "有限状态机-用于编排复杂的流程业务,如订单流转,审批流程",
+  "main": "smf.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "smf",
+    "bamboo"
+  ],
+  "author": "robin",
+  "license": "MIT",
+  "dependencies": {
+    "events": "^3.3.0"
+  }
+}

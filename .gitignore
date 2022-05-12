@@ -1,0 +1,6 @@
+/logs/*
+/run/
+/typings/
+/node_modules/
+.github
+.idea
