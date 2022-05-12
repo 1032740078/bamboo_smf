@@ -152,6 +152,32 @@ module.exports = class Smf {
         return this.next('err', status, paras)
     }
 
+    /**
+     * 触发开始状态
+     * @param  {object} area_name 区块名称.
+     * @param  {Object} paras 触发事件时的入参.
+     */
+    start(area_name, paras) {
+        const area = this.smf_data_list.filter(item => item.area_name === area_name)
+        if (!area.length) { throw new Error(`[${area_name}]没有这个区域`) }
+        this.setStatus(`${area_name}.${area[0].init_status}`)
+        this.emit(this.get(), paras)
+        return this
+    }
+
+    /**
+     * 触发结束状态(最后一个状态)
+     * @param  {object} area_name 区块名称.
+     * @param  {Object} paras 触发事件时的入参.
+     */
+    end(area_name, paras) {
+        const area = this.smf_data_list.filter(item => item.area_name === area_name)
+        if (!area.length || !area[0].transitions.length) { throw new Error(`[${area_name}]没有这个区域`) }
+        this.setStatus(`${area_name}.${area[0].transitions[area[0].transitions.length - 1]}`)
+        this.emit(this.get(), paras)
+        return this
+    }
+
 
     on(fn) {
         this.event.on('next', fn)

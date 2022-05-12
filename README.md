@@ -9,6 +9,7 @@ npm install bamboo_smf -S
 ```
 
 # 使用
+
 ```
 const Smf = require('bamboo_smf');
 const circuit1 = new Smf()
@@ -49,6 +50,7 @@ processFlow.nextTo('order.new')
 # Smf.init
 
 定义初始值状态
+
 ```
 const circuit = new Smf()
 circuit.init('状态链名称', '初始状态')
@@ -57,14 +59,15 @@ circuit.init('状态链名称', '初始状态')
 # Smf.push
 
 添加转变内容
+
 ```
 circuit.push('状态名称', '下一个流程地址(区块名称.状态名称)','异常时的流程地址(区块名称.状态名称)')
 ```
 
-
 # Smf.getSmfData
 
 获取全部定义的json数据
+
 ```
 circuit.getSmfData()
 ```
@@ -72,14 +75,15 @@ circuit.getSmfData()
 # Smf.setSmfDataList
 
 设置所有区块数据
+
 ```
 circuit.setSmfDataList([区块数据])
 ```
 
-
 # Smf.setStatus
 
 设置当前状态
+
 ```
 circuit.setStatus('当前状态(区块名称.状态名称)')
 ```
@@ -87,6 +91,7 @@ circuit.setStatus('当前状态(区块名称.状态名称)')
 # Smf.get
 
 获取当前状态的数据
+
 ```
 circuit.get()
 ```
@@ -94,6 +99,7 @@ circuit.get()
 # Smf.getStatusName
 
 获取当前状态的名称
+
 ```
 circuit.getStatusName()
 ```
@@ -101,6 +107,7 @@ circuit.getStatusName()
 # Smf.getCurrentState
 
 获取当前区域和状态
+
 ```
 circuit.getCurrentState()
 ```
@@ -108,6 +115,7 @@ circuit.getCurrentState()
 # Smf.getTo
 
 获取当前状态的to区域和状态
+
 ```
 circuit.getTo()
 ```
@@ -115,21 +123,39 @@ circuit.getTo()
 # Smf.getErr
 
 获取当前状态的err区域和状态
+
 ```
 circuit.getErr()
+```
+
+# Smf.start
+
+触发开始状态
+
+```
+circuit.start('区块名称','事件入参')
+```
+
+# Smf.end
+
+触发结束状态(最后一个状态)
+
+```
+circuit.end('区块名称','事件入参')
 ```
 
 # Smf.next
 
 按当前状态跳转下一个
+
 ```
 circuit.next('事件:to,err','跳转时可以重新定义当前状态','事件入参')
 ```
 
-
 # Smf.nextTo
 
 按当前状态跳转到to
+
 ```
 circuit.next('跳转时可以重新定义当前状态','事件入参')
 ```
@@ -137,6 +163,7 @@ circuit.next('跳转时可以重新定义当前状态','事件入参')
 # Smf.nextErr
 
 按当前状态跳转到err
+
 ```
 circuit.next('跳转时可以重新定义当前状态','事件入参')
 ```
@@ -144,6 +171,7 @@ circuit.next('跳转时可以重新定义当前状态','事件入参')
 # Smf.on
 
 触发跳转时的事件
+
 ```
 circuit.on((e, paras) => {
     console.log(e,paras);
