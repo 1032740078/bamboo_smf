@@ -1,6 +1,6 @@
 {
   "name": "bamboo_smf",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "有限状态机-用于编排复杂的流程业务,如订单流转,审批流程",
   "main": "smf.js",
   "scripts": {
